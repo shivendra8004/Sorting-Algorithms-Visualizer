@@ -6,7 +6,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 interface SortingAlgorithmContextType {
     arrayToSort: number[];
     setArrayToSort: (arr: number[]) => void;
-    selectAlgorithm: SortingAlgorithmType;
+    selectedAlgorithm: SortingAlgorithmType;
     setSelectedAlgorithm: (algorithm: SortingAlgorithmType) => void;
     isSorting: boolean;
     setIsSorting: (isSorting: boolean) => void;
@@ -22,7 +22,7 @@ const SortingAlgorithmContext = createContext<SortingAlgorithmContextType | unde
 
 export const SortingAlgorithmProvider = ({ children }: { children: React.ReactNode }) => {
     const [arrayToSort, setArrayToSort] = useState<number[]>([]);
-    const [selectAlgorithm, setSelectedAlgorithm] = useState<SortingAlgorithmType>("bubble");
+    const [selectedAlgorithm, setSelectedAlgorithm] = useState<SortingAlgorithmType>("bubble");
     const [isSorting, setIsSorting] = useState<boolean>(false);
     const [animationSpeed, setAnimationSpeed] = useState<number>(MAX_ANIMATION_SPEED);
     const [isAnimationComplete, setIsAnimationComplete] = useState<boolean>(false);
@@ -54,7 +54,7 @@ export const SortingAlgorithmProvider = ({ children }: { children: React.ReactNo
     const value = {
         arrayToSort,
         setArrayToSort,
-        selectAlgorithm,
+        selectedAlgorithm,
         setSelectedAlgorithm,
         isSorting,
         setIsSorting,

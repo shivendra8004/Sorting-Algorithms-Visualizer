@@ -2,12 +2,19 @@
 import React, { useEffect } from "react";
 import { useSortingAlgorithmContext } from "@/context/Visualizer";
 import Slider from "@/components/Input/Slider";
+import Select from "@/components/Input/Select";
+import { algorithmOptions } from "@/lib/utils";
+import { SortingAlgorithmType } from "@/lib/types";
 
 const Home = () => {
-    const { arrayToSort, isSorting, animationSpeed, setAnimationSpeed } = useSortingAlgorithmContext();
+    const { arrayToSort, isSorting, animationSpeed, setAnimationSpeed, selectedAlgorithm, setSelectedAlgorithm } = useSortingAlgorithmContext();
+    const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedAlgorithm(e.target.value as SortingAlgorithmType);
+    };
+
     useEffect(() => {
-        console.log("animationSpeed", animationSpeed);
-    }, [animationSpeed]);
+        console.log("selectedAlgorithm", selectedAlgorithm);
+    }, [selectedAlgorithm]);
     return (
         <main className="absolute top-0 h-screen w-screen z-[-2] bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#150229_1px)] bg-[size:40px_40px]">
             <div className="flex h-full justify-center">
@@ -16,6 +23,7 @@ const Home = () => {
                         <h1 className="text-gray-300 text-xl font-light hidden md:flex">Sorting Algorithms Visualizer</h1>
                         <div className="flex items-center justify-center gap-4">
                             <Slider isDisabled={isSorting} value={animationSpeed} handleChange={(e) => setAnimationSpeed(Number(e.target.value))} />
+                            <Select options={algorithmOptions} defaultValue={selectedAlgorithm} onChange={handleSelectChange} isDisabled={isSorting} />
                         </div>
                     </div>
                     <div className="relative h-[calc(100vh-66px)] w-full">
