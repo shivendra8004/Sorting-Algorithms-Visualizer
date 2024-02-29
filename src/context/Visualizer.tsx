@@ -55,7 +55,8 @@ export const SortingAlgorithmProvider = ({ children }: { children: React.ReactNo
     const runAnimation = (animations: AnimationArrayType) => {
         setIsSorting(true);
         const inverseSpeed = (1 / animationSpeed) * 200;
-        const arrayLines = document.getElementsByClassName(".array-line") as HTMLCollectionOf<HTMLElement>;
+        const arrayLines = document.getElementsByClassName("array-line") as HTMLCollectionOf<HTMLElement>;
+
         const updateClassList = (indexes: number[], addClassName: string, removeClassname: string) => {
             indexes.forEach((index) => {
                 arrayLines[index].classList.add(addClassName);
@@ -71,9 +72,9 @@ export const SortingAlgorithmProvider = ({ children }: { children: React.ReactNo
             setTimeout(() => {
                 const [values, isSwap] = animation;
                 if (!isSwap) {
-                    updateClassList(values, "change-line-color", "default-line-color");
+                    updateClassList(values, "changed-line-color", "default-line-color");
                     setTimeout(() => {
-                        updateClassList(values, "default-line-color", "change-line-color");
+                        updateClassList(values, "default-line-color", "changed-line-color");
                     }, inverseSpeed);
                 } else {
                     const [lineIndex, newHeight] = values;

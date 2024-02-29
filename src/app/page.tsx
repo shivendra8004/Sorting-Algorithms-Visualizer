@@ -3,14 +3,23 @@ import React, { useEffect } from "react";
 import { useSortingAlgorithmContext } from "@/context/Visualizer";
 import Slider from "@/components/Input/Slider";
 import Select from "@/components/Input/Select";
-import { algorithmOptions } from "@/lib/utils";
+import { algorithmOptions, generateAnimationArray } from "@/lib/utils";
 import { SortingAlgorithmType } from "@/lib/types";
 import { RotateCcw } from "lucide-react";
 import { PlayCircle } from "lucide-react";
 
 const Home = () => {
-    const { arrayToSort, isSorting, animationSpeed, setAnimationSpeed, selectedAlgorithm, setSelectedAlgorithm, requiresReset, resetArrayAndAnimation } =
-        useSortingAlgorithmContext();
+    const {
+        arrayToSort,
+        isSorting,
+        animationSpeed,
+        setAnimationSpeed,
+        selectedAlgorithm,
+        setSelectedAlgorithm,
+        requiresReset,
+        resetArrayAndAnimation,
+        runAnimation,
+    } = useSortingAlgorithmContext();
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedAlgorithm(e.target.value as SortingAlgorithmType);
     };
@@ -19,6 +28,7 @@ const Home = () => {
             resetArrayAndAnimation();
             return;
         }
+        generateAnimationArray(selectedAlgorithm, isSorting, arrayToSort, runAnimation);
     };
     return (
         <main className="absolute top-0 h-screen w-screen z-[-2] bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#150229_1px)] bg-[size:40px_40px]">
@@ -29,7 +39,7 @@ const Home = () => {
                         <div className="flex items-center justify-center gap-4">
                             <Slider isDisabled={isSorting} value={animationSpeed} handleChange={(e) => setAnimationSpeed(Number(e.target.value))} />
                             <Select options={algorithmOptions} defaultValue={selectedAlgorithm} onChange={handleSelectChange} isDisabled={isSorting} />
-                            <button className="flex items-center justify-center" onClick={() => {}}>
+                            <button className="flex items-center justify-center" onClick={handlePlay}>
                                 {requiresReset ? <RotateCcw className="text-gray-400 " size={18} /> : <PlayCircle className="text-system-green60" size={18} />}
                             </button>
                         </div>
