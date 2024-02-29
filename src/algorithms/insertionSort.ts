@@ -20,7 +20,7 @@ export function generateIntertionSortArrayAnimation(isSorting: boolean, array: n
     if (isSorting) return;
     if (array.length <= 1) return;
     const animations: AnimationArrayType = [];
-    const auxialiaryArray = array.slice();
+    const auxialiaryArray = [...array]
     runInsertionSort(auxialiaryArray, animations);
     runAnimation(animations);
 }
