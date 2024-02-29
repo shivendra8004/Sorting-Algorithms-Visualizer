@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sorting Visualizer
 
-## Getting Started
+This Sorting Visualizer project is designed to provide a hands-on demonstration of various sorting algorithms in action. Users can visualize the sorting process step by step, allowing for a better understanding of how different algorithms work and their efficiency.
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project walks through the process of creating and deploying a Sorting Visualizer from scratch using Next.js, TypeScript, Tailwind CSS, and deploying it on Netlify. It covers setting up the project, implementing the main layout, incorporating algorithm controls, running animations, describing each algorithm, and finally deploying the application.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+-   `src/app/page.tsx`: Main page component for the visualizer.
+-   `arc/app/globals.css`: Global CSS styles for the visualizer.
+-   `context/Visualizer.tsx`: Component containing the logic for the visualizer.
+-   `src/algorithms`: Folder containing the implementations of sorting algorithms.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Setting Up the Project
 
-## Learn More
+1. Clone the repository to your local machine.
+2. Run `npm install` to install dependencies.
+3. Run `npm run dev` to start the development server.
 
-To learn more about Next.js, take a look at the following resources:
+## Visualizer Context
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The visualizer provides a graphical representation of sorting algorithms, helping users comprehend their behavior and efficiency.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Implementation Details
 
-## Deploy on Vercel
+-   **Main Layout**: Create the main layout of the visualizer using Tailwind CSS.
+-   **Reset Function**: Implement a function to reset the visualizer.
+-   **Algorithm Speed Control**: Allow users to control the speed of the sorting animation.
+-   **Selected Algorithm Control**: Implement controls for selecting different sorting algorithms.
+-   **Run Animation Function**: Develop a function to run the sorting animation.
+-   **Bubble Sort**: Implement the bubble sort algorithm.
+-   **Fix Reset Bug**: Address any bugs related to the reset function.
+-   **Add Ending Animation**: Enhance the visualizer with an ending animation.
+-   **Algorithm Description Component**: Provide descriptions for each implemented algorithm.
+-   **Selection Sort**: Implement the selection sort algorithm.
+-   **Remaining Algorithms**: Implemented remaining sorting algorithms like merge sort, insertion sort and quick sort.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Usage
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+-   Select a sorting algorithm from the dropdown menu.
+-   Adjust the animation speed using the control slider.
+-   Click the "Run" button to start the sorting animation.
+-   Click the "Reset" button to reset the visualizer.
+
+## Technologies Used
+
+-   [Next.js](https://nextjs.org/)
+-   [TypeScript](https://www.typescriptlang.org/)
+-   [Tailwind CSS](https://tailwindcss.com/)
+-   [Netlify](https://www.netlify.com/)
+
+## Contributors
+
+-   [Shivendra Jat](https://www.linkedin.com/in/shivendrajat/)
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
