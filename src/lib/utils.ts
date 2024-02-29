@@ -1,5 +1,6 @@
 import { generateBubbleSortArrayAnimation } from "@/algorithms/bubbleSort";
 import { AnimationArrayType, SortingAlgorithmType } from "./types";
+import { generateSelectionSortArrayAnimation } from "@/algorithms/selectionSort";
 
 export const MIN_ANIMATION_SPEED = 100;
 export const MAX_ANIMATION_SPEED = 400;
@@ -24,6 +25,9 @@ export function generateAnimationArray(
             generateBubbleSortArrayAnimation(isSorting, array, runAnimation);
             break;
 
+        case "selection":
+            generateSelectionSortArrayAnimation(isSorting, array, runAnimation);
+            break;
         default:
             break;
     }
