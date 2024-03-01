@@ -3,13 +3,15 @@ import { MAX_ANIMATION_SPEED, MIN_ANIMATION_SPEED } from "@/lib/utils";
 import React from "react";
 
 const Slider = ({
+    type,
     min = MIN_ANIMATION_SPEED,
     max = MAX_ANIMATION_SPEED,
-    step = 10,
+    step,
     value,
     handleChange,
     isDisabled = false,
 }: {
+    type?: string;
     min?: number;
     max?: number;
     step?: number;
@@ -19,7 +21,7 @@ const Slider = ({
 }) => {
     return (
         <div className="flex gap-2 items-center justify-center">
-            <span className="text-center text-gray-300">Slow</span>
+            <span className="text-center text-gray-300">{type == "size" ? "Min" : "Slow"}</span>
             <input
                 type="range"
                 min={min}
@@ -30,7 +32,7 @@ const Slider = ({
                 disabled={isDisabled}
                 className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-700"
             />
-            <span className="text-center text-gray-300">Fast</span>
+            <span className="text-center text-gray-300">{type == "size" ? "Max" : "Fast"}</span>
         </div>
     );
 };

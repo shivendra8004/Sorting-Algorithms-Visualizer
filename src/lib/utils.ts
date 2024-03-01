@@ -4,6 +4,11 @@ import { generateSelectionSortArrayAnimation } from "@/algorithms/selectionSort"
 import { generateIntertionSortArrayAnimation } from "@/algorithms/insertionSort";
 import { generateMergeSortArrayAnimation } from "@/algorithms/mergeSort";
 import { generateQuickSortArrayAnimation } from "@/algorithms/QuickSort";
+import { generateHeapSortArrayAnimation } from "@/algorithms/heapSort";
+import { generateRadixSortArrayAnimation } from "@/algorithms/radixSort";
+import { generateBucketSortArrayAnimation } from "@/algorithms/bucketSort";
+import { generateCycleSortArrayAnimation } from "@/algorithms/cycleSort";
+import { generateCountingSortArrayAnimation } from "@/algorithms/countingSort";
 
 export const MIN_ANIMATION_SPEED = 100;
 export const MAX_ANIMATION_SPEED = 400;
@@ -16,12 +21,18 @@ export const algorithmOptions = [
     { label: "Merge", value: "merge" },
     { label: "Insertion", value: "insertion" },
     { label: "Selection", value: "selection" },
+    { label: "Heap", value: "heap" },
+    { label: "Radix", value: "radix" },
+    { label: "Bucket", value: "bucket" },
+    { label: "Cycle", value: "cycle" },
+    { label: "Counting", value: "counting" },
 ];
 export function generateAnimationArray(
     selectedAlgorithm: SortingAlgorithmType,
     isSorting: boolean,
     array: number[],
-    runAnimation: (animations: AnimationArrayType) => void
+    runAnimation: (animations: AnimationArrayType) => void,
+    bucketSize: number
 ) {
     switch (selectedAlgorithm) {
         case "bubble":
@@ -43,10 +54,31 @@ export function generateAnimationArray(
         case "quick":
             generateQuickSortArrayAnimation(isSorting, array, runAnimation);
             break;
+
+        case "heap":
+            generateHeapSortArrayAnimation(isSorting, array, runAnimation);
+            break;
+
+        case "radix":
+            generateRadixSortArrayAnimation(isSorting, array, runAnimation);
+            break;
+
+        case "bucket":
+            generateBucketSortArrayAnimation(isSorting, array, bucketSize, runAnimation);
+            break;
+
+        case "cycle":
+            generateCycleSortArrayAnimation(isSorting, array, runAnimation);
+            break;
+
+        case "counting":
+            generateCountingSortArrayAnimation(isSorting, array, runAnimation);
+            break;
         default:
             break;
     }
 }
+
 export const sortingAlgorithmsData = {
     bubble: {
         title: "Bubble Sort",
@@ -87,5 +119,45 @@ export const sortingAlgorithmsData = {
         worstCase: "O(n²)",
         averageCase: "O(n log n)",
         bestCase: "O(n log n)",
+    },
+    heap: {
+        title: "Heap Sort",
+        description:
+            "Heap sort uses the heap data structure to sort elements. It involves building a heap from the input data and repeatedly removing the maximum (for max-heap) or minimum (for min-heap) element from the heap and rebuilding the heap until the input is sorted.",
+        worstCase: "O(n log n)",
+        averageCase: "O(n log n)",
+        bestCase: "O(n log n)",
+    },
+    bucket: {
+        title: "Bucket Sort",
+        description:
+            "Bucket sort divides the input into a finite number of buckets, each of which is then sorted individually, either using a different sorting algorithm or recursively applying bucket sort. After all the elements are placed in the buckets, the buckets are concatenated to produce the final sorted array.",
+        worstCase: "O(n²)",
+        averageCase: "O(n+k)",
+        bestCase: "O(n+k)",
+    },
+    radix: {
+        title: "Radix Sort",
+        description:
+            "Radix sort sorts the elements by first grouping the individual digits of the same place value. Starting from the least significant digit to the most significant digit, each digit is sorted using stable sort algorithms like counting sort or bucket sort.",
+        worstCase: "O(nk)",
+        averageCase: "θ(nk)",
+        bestCase: "Ω(n+k)",
+    },
+    cycle: {
+        title: "Cycle Sort",
+        description:
+            "Cycle sort is an in-place, unstable sorting algorithm that is optimal for sorting arrays where the number of writes is significantly more expensive than the number of reads. It reduces the number of memory writes to a minimum.",
+        worstCase: "O(n²)",
+        averageCase: "O(n²)",
+        bestCase: "O(n²)",
+    },
+    counting: {
+        title: "Counting Sort",
+        description:
+            "Counting sort is a non-comparison based sorting algorithm that sorts elements based on their frequency of occurrence. It works well when the range of input values is relatively small compared to the number of elements.",
+        worstCase: "O(n+k)",
+        averageCase: "O(n+k)",
+        bestCase: "O(n+k)",
     },
 };

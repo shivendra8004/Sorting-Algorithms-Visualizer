@@ -1,4 +1,4 @@
-export type SortingAlgorithmType = "bubble" | "insertion" | "selection" | "merge" | "quick";
+export type SortingAlgorithmType = "bubble" | "insertion" | "selection" | "merge" | "quick" | "heap" | "radix" | "bucket" | "cycle" | "counting";
 export type SelectOptionType = {
     value: string;
     label: string;

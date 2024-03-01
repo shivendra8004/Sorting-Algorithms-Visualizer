@@ -17,6 +17,8 @@ interface SortingAlgorithmContextType {
     resetArrayAndAnimation: () => void;
     runAnimation: (animations: AnimationArrayType) => void;
     requiresReset: boolean;
+    bucketSize: number;
+    setBucketSize: (bucketSize: number) => void;
 }
 
 const SortingAlgorithmContext = createContext<SortingAlgorithmContextType | undefined>(undefined);
@@ -28,6 +30,7 @@ export const SortingAlgorithmProvider = ({ children }: { children: React.ReactNo
     const [animationSpeed, setAnimationSpeed] = useState<number>(MAX_ANIMATION_SPEED);
     const [isAnimationComplete, setIsAnimationComplete] = useState<boolean>(false);
     const requiresReset = isAnimationComplete || isSorting;
+    const [bucketSize, setBucketSize] = useState<number>(10);
 
     useEffect(() => {
         resetArrayAndAnimation();
@@ -125,6 +128,8 @@ export const SortingAlgorithmProvider = ({ children }: { children: React.ReactNo
         resetArrayAndAnimation,
         runAnimation,
         requiresReset,
+        bucketSize,
+        setBucketSize,
     };
     return <SortingAlgorithmContext.Provider value={value}>{children}</SortingAlgorithmContext.Provider>;
 };
